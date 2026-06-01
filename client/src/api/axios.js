@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API = axios.create({
   // baseURL: "http://localhost:5000/api", // 🔁 change if needed
-  baseURL: "https://sakshi-mobile-wala.onrender.com", 
+  baseURL: "https://sakshi-mobile-wala.onrender.com/api", 
 });
 
 // // attach token automatically
