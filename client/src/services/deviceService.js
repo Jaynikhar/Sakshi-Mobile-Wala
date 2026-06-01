@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/devices";
+const API = "https://sakshi-mobile-wala.onrender.com/api/devices";
 
 export const getDevices = async () => {
   const user = JSON.parse(localStorage.getItem("user"));
