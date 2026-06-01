@@ -126,7 +126,7 @@ export default function Home() {
 
           {/* BUTTON */}
           <button
-            onClick={() => window.location.href = "/login"}
+            onClick={() => navigate("/login")}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300"
           >
             Login Now
@@ -140,7 +140,7 @@ export default function Home() {
           </div>
           {/* BUTTON */}
           <button
-            onClick={() => window.location.href = "/Signup"}
+            onClick={() => navigate("/signup")}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300"
           >
             Signup Now
