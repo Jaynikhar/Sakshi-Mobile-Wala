@@ -51,7 +51,7 @@ const AddDevice = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/devices",
+        "https://sakshi-mobile-wala.onrender.com/api/devices",
         { name, fields },
         {
           headers: {
