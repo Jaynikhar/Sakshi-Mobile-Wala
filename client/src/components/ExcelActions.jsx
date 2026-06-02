@@ -37,6 +37,7 @@ export default function ExcelActions() {
     try {
       await importExcel(formData);
       alert("Excel Imported ✅");
+      fetchFiles(); 
     } catch (err) {
       console.log(err);
       alert("Import failed ❌");
