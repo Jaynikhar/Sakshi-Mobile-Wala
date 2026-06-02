@@ -42,12 +42,14 @@ const DeviceDetails = () => {
 
   const fetchDevice = async () => {
     try {
+      setLoading(true);
       const data = await getDeviceById(id);
       setDevice(data);
       setEditData(data.fields || {}); // ✅ sync fields
-      setLoading(false);
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,7 +66,7 @@ const DeviceDetails = () => {
     if (!window.confirm("Are you sure?")) return;
     try {
       await deleteDevice(id, user.token);
-      alert("Device deleted");
+      // alert("Device deleted");
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -105,7 +107,7 @@ const DeviceDetails = () => {
       delete updated[field];
       setEditData(updated);
 
-      alert("Field deleted");
+      // alert("Field deleted");
     } catch (err) {
       console.log(err);
     }
@@ -130,16 +132,16 @@ const DeviceDetails = () => {
       setNewKey("");
       setNewValue("");
 
-      alert("Field added");
+      // alert("Field added");
     } catch (err) {
       console.log(err);
     }
   };
 
 
-  if (!user) return <h1>Loading user...</h1>;
-  if (loading) return <h1>Loading...</h1>;
-  if (!device) return <h1>Device not found</h1>;
+  if (!user) return <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6">Loading user...</div>;
+  if (loading) return <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6"><h1>Loading devices...</h1></div>;
+  if (!device) return <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6"><h1>Add Devices</h1></div>;
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6">
@@ -249,69 +251,6 @@ const DeviceDetails = () => {
       </div>
     </div>
   );
-  // return (
-  //   <div className="p-5">
-  //     <h1 className="text-2xl font-bold mb-4">
-  //       {device.name}
-
-  //       {/* 🖼 Image */} 
-  //       {device.image && (
-  //         <img 
-  //           src={device.image} 
-  //           alt={device.name} 
-  //           className="w-full h-60 object-cover rounded-lg mb-4" 
-  //         /> 
-  //       )}
-  //     </h1>
-      
-  //     {/* 📄 Fields */} 
-  //     <div className="bg-white shadow rounded-xl p-5">
-  //       {Object.keys(editData).map((key) => (
-  //         <div key={key} className="mb-3">
-  //           <label className="block font-semibold">
-  //             {key}
-  //           </label>
-
-  //           <input
-  //             type="text"
-  //             name={key}
-  //             value={editData[key]}
-  //             onChange={handleFieldChange}
-  //             disabled={!isEditor}
-  //             className="border p-2 w-full"
-  //           />
-
-  //           {isEditor && (
-  //             <button
-  //               onClick={() => handleDeleteField(key)}
-  //               className="text-red-500 text-sm"
-  //             >
-  //               Delete Field
-  //             </button>
-  //           )}
-  //         </div>
-  //       ))}
-  //     </div>
-
-  //     {isEditor && (
-  //       <div className="mt-4 space-x-3">
-  //         <button
-  //           onClick={handleUpdateDevice}
-  //           className="bg-blue-500 text-white px-4 py-2"
-  //         >
-  //           Update Device
-  //         </button>
-
-  //         <button
-  //           onClick={handleDeleteDevice}
-  //           className="bg-red-500 text-white px-4 py-2"
-  //         >
-  //           Delete Device
-  //         </button>
-  //       </div>
-  //     )}
-  //   </div>
-  // );
 };
 
 export default DeviceDetails;

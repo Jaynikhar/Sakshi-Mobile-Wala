@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const { login } = useAuth();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
 
@@ -14,12 +15,15 @@ export default function Login() {
     e.preventDefault();
     console.log(form);
     try {
+      setLoading(true);
       const { data } = await API.post("/auth/login", form);
       login(data);
       
       navigate("/");
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -55,8 +59,11 @@ export default function Login() {
         />
 
 
-        <button className="bg-blue-500 hover:bg-blue-600 text-white w-full py-2 rounded transition">
-          Login
+        <button 
+          disabled={loading}
+          className="bg-blue-500 hover:bg-blue-600 text-white w-full py-2 rounded transition"
+        >
+          {loading ? "Logging in..." : "Login"}
         </button>
 
         <div className="mt-6 text-center text-gray-600 dark:text-gray-300">

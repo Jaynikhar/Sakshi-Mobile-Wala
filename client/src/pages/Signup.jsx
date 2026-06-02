@@ -8,17 +8,21 @@ export default function Signup() {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       await API.post("/auth/signup", form); // backend same रहेगा
-      alert("Signup successful");
+      // alert("Signup successful");
       navigate("/login");
     } catch (err) {
       alert(err.response?.data?.message || "Signup failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -62,9 +66,13 @@ export default function Signup() {
           onChange={(e) => setForm({ ...form, password: e.target.value })}
         />
         
-        <button className="bg-green-500 hover:bg-green-600 text-white w-full py-2 rounded transition">
-          Signup
+        <button 
+          disabled={loading}
+          className="bg-green-500 hover:bg-green-600 text-white w-full py-2 rounded transition"
+        >
+          {loading ? "Signing up..." : "Signup"}
         </button>
+        
         <div className="mt-6 text-center text-gray-600 dark:text-gray-300">
           Already have an account?{" "}
           <Link

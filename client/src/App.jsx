@@ -1,13 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import DeviceDetails from "./pages/DeviceDetails"
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup"; // ✅ changed
-import Home from "./pages/Home";
+import AdminDashboard from "./pages/AdminDashboard";
+import DeviceDetails from "./pages/DeviceDetails"
+import Footer from "./components/Footer";
 import AddDevice from "./pages/AddDevice";
 import PrivateRoute from "./components/PrivateRoute";
-import AdminDashboard from "./pages/AdminDashboard";
+
 
 
 export default function App() {
@@ -17,18 +18,10 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/device/:id" element={<DeviceDetails />} />
-        <Route path="/add" element={<AddDevice />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route
-          path="/admin"
-          element={
-            <PrivateRoute role="author">
-              <AdminDashboard />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/admin" element={ <PrivateRoute role="author"> <AdminDashboard /> </PrivateRoute> } />
+        <Route path="/device/:id" element={<DeviceDetails />} />
         <Route
           path="/add"
           element={

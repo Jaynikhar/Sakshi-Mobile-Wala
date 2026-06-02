@@ -37,14 +37,6 @@ export default function Home() {
       console.log(err);
     }
   };
-  //   try {
-  //     const res = await getDevices();
-  //     console.log("DEVICES:", res);
-  //     setDevices(Array.isArray(res.data) ? res.data : []);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   // 🔥 DEBOUNCE (wait 400ms after typing)
   useEffect(() => {
@@ -213,9 +205,11 @@ export default function Home() {
 
       {/* ❌ NO RESULTS */}
       {filteredDevices.length === 0 && (
-        <p className="text-gray-500 mt-4 text-center">
-          No devices found 😢
-        </p>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 dark:from-gray-900 dark:to-gray-800">
+          <p className="text-gray-500 mt-4 text-center">
+            Device Not Found 
+          </p>
+        </div>
       )}
     </div>
   );

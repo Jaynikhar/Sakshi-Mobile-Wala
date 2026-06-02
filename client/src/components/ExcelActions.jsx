@@ -70,7 +70,7 @@ export default function ExcelActions() {
 
     try {
       await deleteFile(filename);
-      alert("Deleted ✅");
+      // alert("Deleted ✅");
       fetchFiles(); // refresh list
     } catch (err) {
       console.log(err);

@@ -60,7 +60,7 @@ const AddDevice = () => {
         }
       );
 
-      alert("Device added successfully");
+      // alert("Device added successfully");
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -164,77 +164,6 @@ const AddDevice = () => {
       </div>
     </>
   );
-
-  // return ( 
-  //   <>
-  //     <div className="p-5 max-w-xl mx-auto"> 
-  //       <h1 className="text-2xl font-bold mb-5">Add Device </h1>
-  //       <form onSubmit={handleSubmit}>
-  //         {/* DEVICE NAME */}
-  //         <input
-  //           type="text"
-  //           placeholder="Device Name"
-  //           value={name}
-  //           onChange={(e) => setName(e.target.value)}
-  //           className="border p-2 w-full mb-4"
-  //           required
-  //         />
-
-  //         {/* ADD FIELD */}
-  //         <div className="flex gap-2 mb-4">
-  //           <input
-  //             type="text"
-  //             placeholder="Field (e.g RAM)"
-  //             value={fieldKey}
-  //             onChange={(e) => setFieldKey(e.target.value)}
-  //             className="border p-2 w-1/2"
-  //           />
-
-  //           <input
-  //             type="text"
-  //             placeholder="Value (e.g 8GB)"
-  //             value={fieldValue}
-  //             onChange={(e) => setFieldValue(e.target.value)}
-  //             className="border p-2 w-1/2"
-  //           />
-
-  //           <button
-  //             type="button"
-  //             onClick={addField}
-  //             className="bg-green-500 text-white px-3"
-  //           >
-  //             Add
-  //           </button>
-  //         </div>
-
-  //         {/* FIELD LIST */}
-  //         {Object.keys(fields).map((key) => (
-  //           <div
-  //             key={key}
-  //             className="flex justify-between border p-2 mb-2"
-  //           >
-  //             <span>
-  //               {key}: {fields[key]}
-  //             </span>
-
-  //             <button
-  //               type="button"
-  //               onClick={() => removeField(key)}
-  //               className="text-red-500"
-  //             >
-  //               X
-  //             </button>
-  //           </div>
-  //         ))}
-
-  //         {/* SUBMIT */}
-  //         <button className="bg-blue-500 text-white px-4 py-2 mt-4">
-  //           Create Device
-  //         </button>
-  //       </form>
-  //     </div>
-  //   </>
-  // );
 };
 
 export default AddDevice;
