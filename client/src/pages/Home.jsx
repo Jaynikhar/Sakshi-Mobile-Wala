@@ -205,7 +205,7 @@ export default function Home() {
 
       {/* ❌ NO RESULTS */}
       {filteredDevices.length === 0 && (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 dark:from-gray-900 dark:to-gray-800">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 dark:from-gray-900 dark:to-gray-800">
           <p className="text-gray-500 mt-4 text-center">
             Device Not Found 
           </p>
