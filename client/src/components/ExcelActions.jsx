@@ -105,20 +105,20 @@ export default function ExcelActions() {
 
   return (
     <>
-      <div className="flex gap-4 mb-6">
+      <div className="flex flex-wrap items-center gap-3 mb-6">
       
         {/* IMPORT */}
         <input
           type="file"
           accept=".xlsx, .xls"
           onChange={(e) => setFile(e.target.files[0])}
-          className="border p-2 rounded"
+          className="border px-2 py-1 text-sm rounded w-48"
         />
 
 
         <button
           onClick={handleImport}
-          className="bg-green-600 text-white px-4 py-2 rounded"
+          className="bg-green-600 text-white px-3 py-1 text-sm rounded hover:bg-green-700 transition"
         >
           Import Excel
         </button>
@@ -126,42 +126,44 @@ export default function ExcelActions() {
         {/* EXPORT */}
         <button
           onClick={handleExport}
-          className="bg-blue-600 text-white px-4 py-2 rounded"
+          className="bg-blue-600 text-white px-3 py-1 text-sm rounded hover:bg-blue-700 transition"
         >
           Export Full Excel
         </button>
         
       </div>
       <div className="mt-6">
-        <h2 className="font-bold mb-2">Uploaded Files</h2>
+        <h2 className="font-semibold mb-3 text-lg">Uploaded Files</h2>
 
         {files.length === 0 ? (
-          <p>No files found</p>
+          <p className="text-gray-500 text-sm" >No files found</p>
         ) : (
           <ul className="space-y-2">
             {files.map((f, i) => (
               <li
                 key={i}
-                className="flex justify-between items-center p-2 bg-gray-100 dark:bg-gray-700 rounded"
+                className="flex flex-wrap justify-between items-center gap-2 p-2 bg-gray-100 dark:bg-gray-700 rounded"
               >
                 {/* ✅ CLICK TO DOWNLOAD */}
-                <span>
+                <span className="text-sm truncate max-w-[200px]" >
                   {f}
                 </span>
 
-                <button
-                  onClick={()=>handleDownload(f)}
-                  className="bg-blue-600 text-white px-4 py-2 rounded"
-                >
-                  Download Excel
-                </button>
-                        
-                <button
-                  onClick={() => handleDelete(f)}
-                  className="bg-red-600 text-white px-3 py-1 rounded"
-                >
-                  Delete
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={()=>handleDownload(f)}
+                    className="bg-blue-600 text-white px-3 py-1 text-xs rounded hover:bg-blue-700 transition"
+                  >
+                    Download Excel
+                  </button>
+                          
+                  <button
+                    onClick={() => handleDelete(f)}
+                    className="bg-red-600 text-white px-3 py-1 text-xs rounded hover:bg-red-700 transition"
+                  >
+                    Delete
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
