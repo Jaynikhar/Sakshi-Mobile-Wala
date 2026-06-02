@@ -143,6 +143,8 @@ export default function Home() {
     );
   }
 
+  if (!device) return <div className="min-h-screen flex items-center justify-center bg-gradient-to-br bg-gray-100 dark:bg-gray-900 p-6"><h1>Add Devices</h1></div>;
+  
   return (
     <div className="p-6">
       {/* 🔍 SEARCH BAR */}
