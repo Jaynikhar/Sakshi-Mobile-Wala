@@ -8,10 +8,14 @@ import DeviceDetails from "./pages/DeviceDetails"
 import Footer from "./components/Footer";
 import AddDevice from "./pages/AddDevice";
 import PrivateRoute from "./components/PrivateRoute";
-
+import { useEffect } from "react";
 
 
 export default function App() {
+  useEffect(() => {
+    console.log("App loaded");
+  }, []);
+
   return (
     <BrowserRouter>
       <Navbar />
